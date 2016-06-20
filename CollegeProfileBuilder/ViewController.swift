@@ -15,12 +15,28 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     @IBOutlet var tableView: UITableView!
     
-    var colleges = ["University of Illinois", "University of Chicago", "NorthWestern University", "Loyola University", "DePaul University"]
+    var colleges : [College] = []
+    
+    
     override func viewDidLoad()
     {
         editButton.tag = 0
         
         super.viewDidLoad()
+        
+        colleges.append(College(name: "University of Chicago", state: "IL", population: 14500, image: UIImage(named: "UofChicago")!))
+        
+        colleges.append(College(name: "Loyola University", state: "IL", population: 16500, image: UIImage(named: "LoyolaU")!))
+        
+        colleges.append(College(name: "Northwestern University", state: "IL", population: 20300, image: UIImage(named: "NorthwesternU")!))
+        
+        colleges.append(College(name: "University of Illinois", state: "IL", population: 44000, image: UIImage(named: "UofI")!))
+        
+        colleges.append(College(name: "DePaul University", state: "IL", population: 23800, image: UIImage(named: "DePaulU")!))
+        
+        
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -28,7 +44,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
-        cell.textLabel?.text = colleges[indexPath.row]
+        cell.textLabel?.text = colleges[indexPath.row].name
         return cell
         
     }
@@ -53,7 +69,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         alert.addAction(cancelAction)
         let addAction = UIAlertAction(title: "Add", style: .Default) { (action) -> Void in
             let collegeTextField = alert.textFields![0] as UITextField
-            self.colleges.append(collegeTextField.text!)
+            self.colleges.append(College(name: collegeTextField.text!))
             self.tableView.reloadData()
         }
         alert.addAction(addAction)
