@@ -29,6 +29,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell
         
     }
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)
+    {
+        if editingStyle == .Delete
+        {
+        colleges.removeAtIndex(indexPath.row)
+        tableView.reloadData()
+        }
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
