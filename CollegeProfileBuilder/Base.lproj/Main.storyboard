@@ -54,7 +54,13 @@
                             <constraint firstItem="ct2-Yi-spe" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="13" id="bcz-cZ-nRu"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="V6d-J1-Ty8"/>
+                    <navigationItem key="navigationItem" id="V6d-J1-Ty8">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="zBC-Rf-0yb">
+                            <connections>
+                                <action selector="onTappedButton:" destination="BYZ-38-t0r" id="sKS-t0-UfG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="ct2-Yi-spe" id="1vN-Ou-0E2"/>
                     </connections>
